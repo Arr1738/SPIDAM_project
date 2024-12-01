@@ -3,7 +3,6 @@
 
 import numpy as np
 import librosa
-from scipy.signal import find_peaks
 
 #load audio file and make sure it is in correct format
 #converst MP3 to WAV if neccessary
@@ -31,10 +30,13 @@ def calculate_rt60(audio, sample_rate):
     squared_signal = audio ** 2
     decay_curve = np.cumsum(squared_signal[::-1])[::-1]
 
+    epsilon = 1e-10
+    decay_curve += epsilon #prevents division by zero
+
     #convert to decibels
     decay_db = 10 * np.log10(decay_curve / np.max(decay_curve))
 
-    #find whne decay curve reaches -60 dB
+    #find when decay curve reaches -60 dB
     time_axis = np.linspace(0, len(audio) / sample_rate, len(decay_db))
     rt60_index = np.where(decay_db <= -60)[0]
 
@@ -45,7 +47,7 @@ def calculate_rt60(audio, sample_rate):
         return None
 
 if __name__ == '__main__':
-    file_path =  "example_audio.wav"
+    file_path =  "16bit1chan.wav"
     audio, sr = load_audio(file_path)
     if audio is not None:
         print(f"Sample Rate: {sr}")
