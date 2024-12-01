@@ -1,0 +1,20 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+
+# Audio and large data files
+*.wav
+*.mp3
+*.aac
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Virtual environment
+venv/
+env/
