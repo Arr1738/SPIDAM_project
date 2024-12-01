@@ -1,2 +1,8 @@
 *List of packages that need to be pip installed*
 
+numpy
+pandas
+matplotlib
+scipy
+librosa
+tkinter
