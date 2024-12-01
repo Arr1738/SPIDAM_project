@@ -24,3 +24,33 @@ def clean_audio(audio):
     #librosa.load already handles mono
     return audio
 
+#calculate RT60 value for audio data
+
+def calculate_rt60(audio, sample_rate):
+    #energy decay curve
+    squared_signal = audio ** 2
+    decay_curve = np.cumsum(squared_signal[::-1])[::-1]
+
+    #convert to decibels
+    decay_db = 10 * np.log10(decay_curve / np.max(decay_curve))
+
+    #find whne decay curve reaches -60 dB
+    time_axis = np.linspace(0, len(audio) / sample_rate, len(decay_db))
+    rt60_index = np.where(decay_db <= -60)[0]
+
+    if rt60_index.size > 0:
+        rt60_time = time_axis[rt60_index[0]]
+        return rt60_time
+    else:
+        return None
+
+if __name__ == '__main__':
+    file_path =  "example_audio.wav"
+    audio, sr = load_audio(file_path)
+    if audio is not None:
+        print(f"Sample Rate: {sr}")
+        rt60 = calculate_rt60(audio, sr)
+        if rt60:
+            print(f"RT60: {rt60:.2} seconds")
+        else:
+            print("RT60 calculation failed")
