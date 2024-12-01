@@ -5,15 +5,15 @@ from model import load_audio, calculate_rt60
 import tkinter as tk
 from tkinter import filedialog
 import matplotlib.pyplot as plt
+from controller import Controller
 
 class SPIDAMApp:
     def __init__(self, root):
         self.root = root
         self.root.title("SPIDAM - Reverberation Time Analysis")
-        self.save_plot = None
+        self.controller = Controller(self) #controller initialized
         self.audio_file = None
         self.sample_rate = None
-        self.audio_info_label = None
         self.rt60_value = None
         self.create_widgets()
 
@@ -50,61 +50,63 @@ class SPIDAMApp:
         file_path = filedialog.askopenfilename(filetypes=[("WAV files", "*.wav"), ("MP3 files", "*.mp3")])
         if file_path:
             print(f"Loaded file: {file_path}")
-            self.audio_file, self.sample_rate = load_audio(file_path)
-
-            #audio duration
-            duration = len(self.audio_file / self.sample_rate)
-
-            if self.audio_file is not None:
-                self.rt60_value = calculate_rt60(self.audio_file, self.sample_rate)
-                self.rt60_label.config(text=f"RT60 Value: {self.rt60_value:.2f} s")  # Update RT60 value display
-                #display file info
-                self.audio_info_label.config(text=f"File: {file_path.split('/')[-1]} | Duration: {duration:.2f}s")
-                print(f"RT60 Value: {self.rt60_value}")
+            self.controller.load_audio_file(file_path)
 
     def plot_rt60(self):
-        if self.rt60_value is not None:
-            # Clear any existing plot
-            for widget in self.canvas_frame.winfo_children():
-                widget.destroy()
+        self.controller.plot_rt60()
 
-            frequencies = [100, 500, 1000, 2000, 4000, 8000]  # Example frequencies in Hz
-            rt60_values = [self.rt60_value * 0.8, self.rt60_value * 0.9, self.rt60_value * 1.0,
-                           self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6]  # Example RT60 for each frequency
+    def clear_plot(self):
+        self.controller.clear_plot()
 
-            # Create the Matplotlib figure
-            fig, ax = plt.subplots(figsize=(6, 4))
+    def save_plot(self):
+        self.controller.save_plot()
 
-            # Plot the data
-            ax.plot(frequencies, rt60_values, marker='o', linestyle='-', color='b', label="RT60 Values")
-            ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
-            ax.set_xlabel("Frequency (Hz)")
-            ax.set_ylabel("RT60 (s)")
-            ax.legend()
-
-            canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
-            canvas.draw()
-
-            #Pack the canvas widget to display the plot
-            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+    def update_rt60_value(self, rt60_value):
+        #update rt60 value in gui
+        print(f"Updating RT60 value in view: {rt60_value}") #debugging
+        self.rt60_value = rt60_value
+        if self.rt60_value is None:
+            self.rt60_label.config(text=f"RT60 Value: {self.rt60_value:.2f} s")
         else:
-            print("Please load an audio file first.")
+            self.rt60_label.config(text="RT60 Value: Connection Failed")
+
+    def update_audio_info(self, file_path, duration):
+        #display file name and duration
+        self.audio_info_label.config(text=f"File: {file_path.split('/')[-1]} | Duration: {duration:.2f}s")
+
+    def plot_rt60(self, rt60_value):
+        # Plot RT60 in the GUI
+        self.rt60_value = rt60_value
+        print(f"Plotting RT60: {self.rt60_value:.2f} s")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        ax.plot([100, 500, 1000, 2000, 4000, 8000],
+                [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
+                 self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6], marker='o', color='b')
+        ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
+        ax.set_xlabel("Frequency (Hz)")
+        ax.set_ylabel("RT60 (s)")
+        ax.legend()
+
+        canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
+        canvas.draw()
+        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
 
     #save plots
-    def save_plot(self):
-        if self.rt60_value is not None:
-            #Save the current plot as a PNG file
-            fig, ax = plt.subplots(figsize=(6, 4))
-            ax.plot([100, 500, 1000, 2000, 4000, 8000],
-                    [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
-                     self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6], marker='o', color='b')
-            ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
-            ax.set_xlabel("Frequency (Hz)")
-            ax.set_ylabel("RT60 (s)")
+    def save_plot(self, rt60_value):
+        #Save the current plot as a PNG file
+        print(f"Saving plot with RT60 Value: {rt60_value}")
+        fig, ax = plt.subplots(figsize=(6, 4))
+        ax.plot([100, 500, 1000, 2000, 4000, 8000],
+                [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
+                 self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6], marker='o', color='b')
 
-            #Save as PNG
-            fig.savefig('rt60_plot.png')
-            print("Plot saved as rt60_plot.png")
+        ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
+        ax.set_xlabel("Frequency (Hz)")
+        ax.set_ylabel("RT60 (s)")
+
+        #Save as PNG
+        fig.savefig('rt60_plot.png')
+        print("Plot saved as rt60_plot.png")
 
     # Remove any existing plot from the canvas
     def clear_plot(self):
