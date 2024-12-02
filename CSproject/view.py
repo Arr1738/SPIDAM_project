@@ -65,48 +65,56 @@ class SPIDAMApp:
         #update rt60 value in gui
         print(f"Updating RT60 value in view: {rt60_value}") #debugging
         self.rt60_value = rt60_value
-        if self.rt60_value is None:
-            self.rt60_label.config(text=f"RT60 Value: {self.rt60_value:.2f} s")
+        if rt60_value is not None:
+            self.rt60_label.config(text=f"RT60 Value: {rt60_value:.2f} s")
         else:
-            self.rt60_label.config(text="RT60 Value: Connection Failed")
+            self.rt60_label.config(text="RT60 Value: Calculation Failed")
 
     def update_audio_info(self, file_path, duration):
         #display file name and duration
         self.audio_info_label.config(text=f"File: {file_path.split('/')[-1]} | Duration: {duration:.2f}s")
 
-    def plot_rt60(self, rt60_value):
+    def plot_rt60(self):
         # Plot RT60 in the GUI
-        self.rt60_value = rt60_value
-        print(f"Plotting RT60: {self.rt60_value:.2f} s")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot([100, 500, 1000, 2000, 4000, 8000],
-                [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
-                 self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6], marker='o', color='b')
-        ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
-        ax.set_xlabel("Frequency (Hz)")
-        ax.set_ylabel("RT60 (s)")
-        ax.legend()
+        if self.rt60_value is not None:
+            print(f"Plotting RT60: {self.rt60_value:.2f} s")
+            fig, ax = plt.subplots(figsize=(6, 4))
+            ax.plot([100, 500, 1000, 2000, 4000, 8000],
+                    [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
+                     self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6],
+                    marker='o', color='b', label="RT60 Across Frequencies")
+            ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
+            ax.set_xlabel("Frequency (Hz)")
+            ax.set_ylabel("RT60 (s)")
+            ax.legend()
 
-        canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
-        canvas.draw()
-        canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+            canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
+            canvas.draw()
+            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        else:
+            print("RT60 value is not available")
 
     #save plots
-    def save_plot(self, rt60_value):
-        #Save the current plot as a PNG file
-        print(f"Saving plot with RT60 Value: {rt60_value}")
-        fig, ax = plt.subplots(figsize=(6, 4))
-        ax.plot([100, 500, 1000, 2000, 4000, 8000],
-                [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
-                 self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6], marker='o', color='b')
+    def save_plot(self):
+        if self.rt60_value is not None:
+            #Save the current plot as a PNG file
+            print(f"Saving plot with RT60 Value: {self.rt60_value}")
+            fig, ax = plt.subplots(figsize=(6, 4))
+            ax.plot([100, 500, 1000, 2000, 4000, 8000],
+                    [self.rt60_value * 0.9, self.rt60_value * 1.0, self.rt60_value * 1.1,
+                     self.rt60_value * 1.2, self.rt60_value * 1.4, self.rt60_value * 1.6],
+                    marker='o', color='b', label="RT60 Across Frequencies")
 
-        ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
-        ax.set_xlabel("Frequency (Hz)")
-        ax.set_ylabel("RT60 (s)")
+            ax.set_title(f"RT60 Plot - {self.rt60_value:.2f} s")
+            ax.set_xlabel("Frequency (Hz)")
+            ax.set_ylabel("RT60 (s)")
+            ax.legend()
 
-        #Save as PNG
-        fig.savefig('rt60_plot.png')
-        print("Plot saved as rt60_plot.png")
+            #Save as PNG
+            fig.savefig('rt60_plot.png')
+            print("Plot saved as rt60_plot.png")
+        else:
+            print("RT60 value is not available for saving")
 
     # Remove any existing plot from the canvas
     def clear_plot(self):

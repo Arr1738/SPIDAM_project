@@ -12,6 +12,7 @@ class Controller:
 
     def load_audio_file(self, file_path):
         #load audio file using model and pass to view
+        print(f"Loading audio file: {file_path}")
         self.audio_file, self.sample_rate = load_audio(file_path)
 
         if self.audio_file is not None:
@@ -21,18 +22,20 @@ class Controller:
 
             #call calculation after loading audio
             self.rt60_value = calculate_rt60(self.audio_file, self.sample_rate)
-            if self.rt60_value is not None:
-                print("RT60 calculation failed.")
+            if self.rt60_value is None:
+                print("RT60 calculation failed. Ensure the audio file has a clear decay")
+                self.view.update_rt60_value(None)
             else:
-                print(f"Calculated RT60: {self.rt60_value}")
+                print(f"Calculated RT60: {self.rt60_value:.2f} seconds")
+                self.view.update_rt60_value(self.rt60_value)
 
             #update view with calculated rt60 value
             self.view.update_audio_info(file_path, self.duration)
-            self.view.update_rt60_value(self.rt60_value)
 
     def plot_rt60(self):
         #plot rt60 data in view file
         if self.rt60_value is not None:
+            print(f"Plotting RT60: {self.rt60_value:.2f} seconds")
             #generate plot using calculated rt60 value
             self.view.plot_rt60(self.rt60_value)
         else:
@@ -45,6 +48,7 @@ class Controller:
     def save_plot(self):
         #save plot to a file
         if self.rt60_value is not None:
+            print(f"Saving RT60 plot with value: {self.rt60_value:.2f} seconds")
             self.view.save_plot(self.rt60_value)
         else:
             print('RT60 value is not calculated yet.')
