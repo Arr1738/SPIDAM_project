@@ -33,20 +33,13 @@ def calculate_rt60(audio, sample_rate):
     epsilon = 1e-10
     decay_curve += epsilon #prevents division by zero
 
-    # Debugging: Print the max and min of decay_curve
-    #print(f"Decay curve max: {np.max(decay_curve)}, min: {np.min(decay_curve)}")
-
     #convert to decibels
     decay_db = 10 * np.log10(decay_curve / np.max(decay_curve))
-    #debug
-    #print(f"Decay dB max: {np.max(decay_db)}, min: {np.min(decay_db)}")
 
     #find when decay curve reaches -60 dB
     time_axis = np.linspace(0, len(audio) / sample_rate, len(decay_db))
 
     rt60_index = np.where(decay_db <= -60)[0]
-    #debug
-    #print(f"RT60 index: {rt60_index}")
 
     if rt60_index.size > 0:
         rt60_time = time_axis[rt60_index[0]]
