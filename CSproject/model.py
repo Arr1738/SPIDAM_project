@@ -3,14 +3,39 @@
 
 import numpy as np
 import librosa
+from pydub import AudioSegment
+import os
+
 
 #load audio file and make sure it is in correct format
-#converst MP3 to WAV if neccessary
+#converst MP3 to WAV if necessary
+
+def convert_to_wav(file_path):
+    if file_path.endswith('.wav'):
+        return file_path
+
+    #load audio file using pydub
+    audio = AudioSegment.from_file(file_path)
+
+    #save as new .wav file
+    wav_path = os.path.splitext(file_path)[0] + '.wav'
+    audio.export(wav_path, format="wav")
+    print(f"Converted {file_path} to {wav_path}")
+    return wav_path
 
 def load_audio(file_path):
     try:
+        #convert to wav if necessary
+        wav_path = convert_to_wav(file_path)
+
         #load file
         audio, sample_rate = librosa.load(file_path, sr=None, mono=True)
+        print(f"Loaded file: {wav_path}")
+
+        #clean temp wav file if converted
+        if not file_path.endswith('.wav'):
+            os.remove(wav_path)
+            print(f"Temporary file {wav_path} removed.")
         return audio, sample_rate
 
     except Exception as e:

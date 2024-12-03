@@ -1,8 +1,0 @@
-* a8ae108 Added controller.py, main.py, model.py, and view.py Added .gitignore file
-*   294de28 Merge remote-tracking branch 'origin/main'
-|\  
-| * 1fd576c Update README.md
-| * 32a9fba Create README.md
-* | c85ec34 Added controller.py, main.py, model.py, and view.py
-|/  
-* 69224ef Initial commit
