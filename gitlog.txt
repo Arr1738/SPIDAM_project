@@ -1,0 +1,345 @@
+commit 191a248ca273edf62ff09fcbcdff07a4af07e89e
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Dec 4 18:01:43 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+    Add calculations and plots for different frequencies
+
+commit 729341f551a8b7c5f46fa2121f8469e17876650e
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Dec 4 17:31:10 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+
+commit f89f04f1c2231da7ffa6ae03fe0624937f0643b2
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Dec 4 17:21:44 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+
+commit e25ac80110efe20da6078c9bc50901b775ef75da
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Mon Dec 2 19:11:44 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+
+commit 08ece27acfb5a4680197260bc791cf80a5b3f6cf
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 20:27:31 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+
+commit 6a71b870fdabd1dd56737e36701a97dcdfd762fa
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 19:48:49 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+
+commit 9d0c58d3feada5af1c9b2e790ed9395356bd37fd
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 19:47:36 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+
+commit dc9edd8855a27e665699ecbd6a12390deca51809
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 19:38:15 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+
+commit 86c31d1417c92947fa79300ee025f41ff49390c4
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 19:35:18 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+
+commit 8b80b2c50492e98933d957c0ac13a3bf2c94ef8e
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 18:07:03 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+
+commit 581108c548956fee7f4f5e3fa395b9309f2e80ec
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 16:53:18 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+
+commit 7f941391645480e4b008ff4c37d0f0a25b37b015
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 16:41:18 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+
+commit 93367bb95e1e5630f70e086d6e5ea416f757f373
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 14:33:11 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+
+commit f9d2c31a5ec46cf6ef34be44e9778a98b6d1ec2b
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 14:21:41 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+
+commit 706460fcc0eebdb7093e0e9ecc84a0abd857aa2a
+Merge: 32144ae fe3a8ac
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 13:57:44 2024 -0500
+
+    gerge branch 'feature-model'
+
+commit fe3a8acbe8fc28f81ca83aa7966609cce4ec8a2b
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 13:54:58 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+
+commit 7f336db541d3c60a62008eec2b9d203c38952986
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 13:27:23 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+
+commit 3d61738b1f65408392e48e6442a7721cbe2b5b58
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 13:12:15 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+
+commit 32144ae257e8891b7652d3caa5179a69e1c595db
+Merge: a8ae108 2582379
+Author: Arr1738 <alexres1011@gmail.com>
+Date:   Sun Dec 1 12:57:31 2024 -0500
+
+    Merge pull request #1 from Arr1738/feature-model
+    
+    feature-model branch
+
+commit 25823796209bc6de8d407008f0f9328cc89920f9
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 12:27:45 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+
+commit a8ae108d33c6fc2ab255812d9a3f33137afdb828
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Sun Dec 1 12:22:01 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+
+commit 294de28234fdbb9a4223519c534325bc4edcd04f
+Merge: c85ec34 1fd576c
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Thu Nov 21 09:52:55 2024 -0500
+
+    Merge remote-tracking branch 'origin/main'
+
+commit c85ec343f78c829b5766239cf0a883710ce016bf
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Nov 20 11:49:36 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+
+commit 1fd576c1ffe989677b93bc52753afa148d293cf2
+Author: Arr1738 <alexres1011@gmail.com>
+Date:   Wed Nov 20 11:44:01 2024 -0500
+
+    Update README.md
+
+commit 32a9fba301249fbc4c574b0e781b1f83a83e8b09
+Author: Arr1738 <alexres1011@gmail.com>
+Date:   Wed Nov 20 11:43:42 2024 -0500
+
+    Create README.md
+
+commit 69224ef6f499c45fd77242854bbe9095cc56dd86
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Nov 20 11:40:13 2024 -0500
+
+    Initial commit
