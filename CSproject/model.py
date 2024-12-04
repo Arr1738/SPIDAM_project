@@ -5,7 +5,7 @@ import numpy as np
 import librosa
 from pydub import AudioSegment
 import os
-
+from scipy.signal import butter, filtfilt
 
 #load audio file and make sure it is in correct format
 #converst MP3 to WAV if necessary
@@ -73,6 +73,34 @@ def calculate_rt60(audio, sample_rate):
     else:
         print("RT60 calculation could not find a valid decay point")
         return None
+
+#Apply a bandpass filter to the audio signal.
+def bandpass_filter(audio, sample_rate, lowcut, highcut):
+    nyquist = 0.5 * sample_rate
+    low = lowcut / nyquist
+    high = highcut / nyquist
+    b, a = butter(1, [low, high], btype='band')
+    return filtfilt(b, a, audio)
+
+#Calculate RT60 values for low, mid, and high frequency bands.
+def calculate_band_rt60(audio, sample_rate):
+    frequency_bands = {
+        "Low": (20, 500),
+        "Mid": (500, 2000),
+        "High": (2000, 20000)
+    }
+
+    rt60_values = {}
+    for band, (lowcut, highcut) in frequency_bands.items():
+        #apply bandpass filter
+        filtered_audio = bandpass_filter(audio, sample_rate, lowcut, highcut)
+
+        #calculate rt60 for filtered signal
+        rt60 = calculate_rt60(filtered_audio, sample_rate)
+        rt60_values[band] = rt60
+
+    return rt60_values
+
 
 #test
 if __name__ == '__main__':

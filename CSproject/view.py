@@ -27,6 +27,10 @@ class SPIDAMApp:
         self.plot_button = tk.Button(self.root, text="Plot RT60", command=self.plot_rt60)
         self.plot_button.pack(pady=10)
 
+        #band-specific plot
+        self.band_rt60_button = tk.Button(self.root, text="Plot Band RT60", command=self.plot_band_rt60)
+        self.band_rt60_button.pack(pady=10)
+
         #show waveform
         self.waveform_button = tk.Button(self.root, text="Show Waveform", command=self.show_waveform)
         self.waveform_button.pack(pady=10)
@@ -123,6 +127,28 @@ class SPIDAMApp:
             canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
         else:
             print("RT60 value is not available")
+
+    #displays a bar plot for the different frequencies
+    def plot_band_rt60(self):
+        if hasattr(self.controller, "band_rt60_values") and self.controller.band_rt60_values is not None:
+            rt60_values = self.controller.band_rt60_values
+
+            # Create a bar plot
+            bands = list(rt60_values.keys())
+            values = list(rt60_values.values())
+
+            fig, ax = plt.subplots(figsize=(6, 4))
+            ax.bar(bands, values, color=["blue", "green", "red"])
+            ax.set_title("Band-Specific RT60 Values")
+            ax.set_xlabel("Frequency Bands")
+            ax.set_ylabel("RT60 (s)")
+
+            # Embed the plot into Tkinter
+            canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
+            canvas.draw()
+            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        else:
+            print("No band-specific RT60 values available. Please load an audio file first.")
 
     #save plots
     def save_plot(self):

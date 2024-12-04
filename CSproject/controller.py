@@ -1,6 +1,7 @@
 # Controls logic between view and model
 
-from model import load_audio, calculate_rt60
+from model import load_audio, calculate_rt60, calculate_band_rt60
+
 
 class Controller:
     def __init__(self, view):
@@ -22,11 +23,16 @@ class Controller:
 
             #call calculation after loading audio
             self.rt60_value = calculate_rt60(self.audio_file, self.sample_rate)
+
+            #calculate rt60 for low, mid, and high frequencies
+            self.band_rt60_values = calculate_band_rt60(self.audio_file, self.sample_rate)
+
             if self.rt60_value is None:
                 print("RT60 calculation failed. Ensure the audio file has a clear decay")
                 self.view.update_rt60_value(None)
             else:
                 print(f"Calculated RT60: {self.rt60_value:.2f} seconds")
+                print(f"Band-specific RT60 values: {self.band_rt60_values}")
                 self.view.update_rt60_value(self.rt60_value)
 
             #update view with calculated rt60 value
