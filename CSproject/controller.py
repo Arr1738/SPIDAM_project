@@ -31,6 +31,7 @@ class Controller:
 
             #update view with calculated rt60 value
             self.view.update_audio_info(file_path, self.duration)
+            self.view.update_audio_data(self.audio_file, self.sample_rate)
 
     def plot_rt60(self):
         #plot rt60 data in view file

@@ -57,6 +57,11 @@ class SPIDAMApp:
             print(f"Loaded file: {file_path}")
             self.controller.load_audio_file(file_path)
 
+    def update_audio_data(self, audio, sample_rate):
+        self.audio_file = audio
+        self.sample_rate = sample_rate
+        print("Audio data and sample rate updated in the view.")
+
     def show_waveform(self):
         if self.audio_file is not None and self.sample_rate is not None:
             # Clear existing plots
