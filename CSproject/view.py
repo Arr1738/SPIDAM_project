@@ -5,6 +5,7 @@ from model import load_audio, calculate_rt60
 import tkinter as tk
 from tkinter import filedialog
 import matplotlib.pyplot as plt
+import librosa.display
 from controller import Controller
 
 class SPIDAMApp:
@@ -25,6 +26,10 @@ class SPIDAMApp:
         # Plot Button
         self.plot_button = tk.Button(self.root, text="Plot RT60", command=self.plot_rt60)
         self.plot_button.pack(pady=10)
+
+        #show waveform
+        self.waveform_button = tk.Button(self.root, text="Show Waveform", command=self.show_waveform)
+        self.waveform_button.pack(pady=10)
 
         #save plot
         self.save_button = tk.Button(self.root, text="Save Plot", command=self.save_plot)
@@ -51,6 +56,26 @@ class SPIDAMApp:
         if file_path:
             print(f"Loaded file: {file_path}")
             self.controller.load_audio_file(file_path)
+
+    def show_waveform(self):
+        if self.audio_file is not None and self.sample_rate is not None:
+            # Clear existing plots
+            self.clear_plot()
+
+            # Create the Matplotlib figure
+            fig, ax = plt.subplots(figsize=(10, 4))
+            librosa.display.waveshow(self.audio_file, sr=self.sample_rate, ax=ax, x_axis='time', color='b')
+            ax.set_title("Waveform")
+            ax.set_xlabel("Time (s)")
+            ax.set_ylabel("Amplitude")
+            plt.tight_layout()
+
+            # Embed the plot into Tkinter
+            canvas = FigureCanvasTkAgg(fig, master=self.canvas_frame)
+            canvas.draw()
+            canvas.get_tk_widget().pack(fill=tk.BOTH, expand=True)
+        else:
+            print("No audio file loaded. Please load a file first.")
 
     def plot_rt60(self):
         self.controller.plot_rt60()

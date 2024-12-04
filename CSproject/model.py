@@ -74,6 +74,7 @@ def calculate_rt60(audio, sample_rate):
         print("RT60 calculation could not find a valid decay point")
         return None
 
+#test
 if __name__ == '__main__':
     file_path =  "16bit1chan.wav"
     audio, sr = load_audio(file_path)
