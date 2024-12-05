@@ -1,3 +1,106 @@
+commit 44bd8de69699d1cb0b6853f86bfa4c60874cea6d
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Thu Dec 5 09:55:11 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+    Add calculations and plots for different frequencies
+    Add updated gitlog.txt
+    Updated gitignore
+    Updated README
+
+commit c6d14fb376f4e5a936e5cda3137bd09abce1f74c
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Thu Dec 5 09:50:03 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+    Add calculations and plots for different frequencies
+    Add updated gitlog.txt
+    Updated gitignore
+
+commit e9f91557f7d131357ea7e958e4a8d134fe4bb864
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Dec 4 18:09:15 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+    Add calculations and plots for different frequencies
+    Add updated gitlog.txt
+
+commit a23d1678cfd64b6b7d77db0cb682526d03c527f0
+Author: alexisresendiz <alexres1011@gmail.com>
+Date:   Wed Dec 4 18:06:28 2024 -0500
+
+    Added controller.py, main.py, model.py, and view.py
+    Added .gitignore file
+    Added gitlog txt file
+    Add load_audio and clean_audio function in model.py
+    Add calculate_rt60 function
+    Tested model.py; works good
+    Add basic gui and plots
+    Updated gui and plots to get actual data
+    debugged view.py
+    Add controller class with functions
+    Debugged controller and view
+    Ad functions in main.py
+    Removed debug prints
+    Updated README
+    Updated requirements
+    Add wav conversion function and updated requirements
+    Add show waveform button
+    Debugged show waveform button
+    Add calculations and plots for different frequencies
+    Add updated gitlog.txt
+
 commit 191a248ca273edf62ff09fcbcdff07a4af07e89e
 Author: alexisresendiz <alexres1011@gmail.com>
 Date:   Wed Dec 4 18:01:43 2024 -0500
